@@ -1,22 +1,22 @@
-ARG APP_PATH=/opt/outline
-FROM outlinewiki/outline-base as base
-
-ARG APP_PATH
-WORKDIR $APP_PATH
-
-# ---
 FROM node:16.14.2-alpine3.15 AS runner
 
 ARG APP_PATH
 WORKDIR $APP_PATH
 ENV NODE_ENV production
 
-COPY --from=base $APP_PATH/build ./build
-COPY --from=base $APP_PATH/server ./server
-COPY --from=base $APP_PATH/public ./public
-COPY --from=base $APP_PATH/.sequelizerc ./.sequelizerc
-COPY --from=base $APP_PATH/node_modules ./node_modules
-COPY --from=base $APP_PATH/package.json ./package.json
+COPY ./package.json ./yarn.lock ./
+
+RUN yarn install --no-optional --frozen-lockfile --network-timeout 1000000 && \
+  yarn cache clean
+
+COPY . .
+ARG CDN_URL
+RUN yarn build
+
+RUN rm -rf node_modules
+
+RUN yarn install --production=true --frozen-lockfile --network-timeout 1000000 && \
+  yarn cache clean
 
 RUN addgroup -g 1001 -S nodejs && \
   adduser -S nodejs -u 1001 && \
