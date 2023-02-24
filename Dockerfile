@@ -6,7 +6,7 @@ ENV NODE_ENV production
 
 COPY ./package.json ./yarn.lock ./
 
-RUN yarn install --no-optional --frozen-lockfile --network-timeout 1000000 && \
+RUN yarn install --no-optional --network-timeout 1000000 && \
   yarn cache clean
 
 COPY . .
