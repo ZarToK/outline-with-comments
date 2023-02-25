@@ -5,10 +5,9 @@ ARG APP_PATH
 WORKDIR $APP_PATH
 COPY . .
 
-ENV NODE_ENV production
+RUN yarn install --pure-lockfile --network-timeout 1000000
 
-RUN yarn install --pure-lockfile --network-timeout 1000000 && \
-  yarn cache clean
+ENV NODE_ENV production
 
 RUN yarn build
 
