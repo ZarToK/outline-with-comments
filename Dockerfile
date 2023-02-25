@@ -5,17 +5,10 @@ ARG APP_PATH
 WORKDIR $APP_PATH
 COPY ./package.json ./yarn.lock ./
 
-RUN yarn install --no-optional --network-timeout 1000000 && \
+RUN yarn install --network-timeout 1000000 && \
   yarn cache clean
 
-COPY . .
-ARG CDN_URL
 RUN yarn build
-
-RUN rm -rf node_modules
-
-RUN yarn install --production=true --network-timeout 1000000 && \
-  yarn cache clean
 
 # ---
 ARG APP_PATH=/opt/outline

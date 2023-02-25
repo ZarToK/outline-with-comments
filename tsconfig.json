@@ -9,7 +9,12 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "jsx": "react",
-    "lib": ["dom", "es2020", "dom.iterable", "esnext.asynciterable"],
+    "lib": [
+      "dom",
+      "es2020",
+      "dom.iterable",
+      "esnext.asynciterable"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
@@ -23,10 +28,18 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "es2020",
     "paths": {
-      "prosemirror-markdown": ["./node_modules/@types/prosemirror-markdown"],
-      "@server/*": ["./server/*"],
-      "@shared/*": ["./shared/*"],
-      "~/*": ["./app/*"]
+      "prosemirror-markdown": [
+        "./node_modules/@types/prosemirror-markdown"
+      ],
+      "@server/*": [
+        "./server/*"
+      ],
+      "@shared/*": [
+        "./shared/*"
+      ],
+      "~/*": [
+        "./app/*"
+      ]
     }
   },
   "exclude": [
