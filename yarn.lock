@@ -6944,10 +6944,10 @@ datadog-metrics@^0.9.3:
     debug "3.1.0"
     dogapi "2.8.4"
 
-date-fns@^2.25.0, date-fns@^2.28.0, date-fns@^2.29.1:
-  version "2.29.2"
-  resolved "https://registry.npmjs.org/date-fns/-/date-fns-2.29.2.tgz"
-  integrity sha512-0VNbwmWJDS/G3ySwFSJA3ayhbURMTJLtwM2DTxf9CWondCnh6DTNlO9JgRSq6ibf4eD0lfMJNBxUdEAHHix+bA==
+date-fns@^2.28.0, date-fns@^2.29.1, date-fns@^2.29.3:
+  version "2.29.3"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.29.3.tgz#27402d2fc67eb442b511b70bbdf98e6411cd68a8"
+  integrity sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
 
 dd-trace@^2.12.1:
   version "2.18.0"
