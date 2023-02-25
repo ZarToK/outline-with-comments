@@ -3,8 +3,11 @@ FROM node:16.14.2-alpine3.15 AS deps
 
 ARG APP_PATH
 WORKDIR $APP_PATH
-
 COPY . .
+
+RUN yarn install --network-timeout 1000000 && \
+  yarn cache clean
+
 RUN yarn build
 
 # ---
