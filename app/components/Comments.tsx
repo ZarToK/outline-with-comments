@@ -18,13 +18,24 @@ const Comments = (props: Props) => {
 
   const setData = (data: any) => {
     data.forEach((item: any) => {
+      const userItem = users.get(item.userId);
       item.comId = item.commentId;
       item.replies = item.children;
-      users.all.forEach((userItem) => {
-        if (userItem.id === item.userId) {
-          item.avatarUrl = userItem.avatarUrl;
-          item.fullName = userItem.name;
-        }
+      item.avatarUrl = userItem?.avatarUrl;
+      item.fullName = userItem?.name;
+      item.replies.forEach((item2: any) => {
+        const userItem2 = users.get(item2.userId);
+        item2.comId = item2.commentId;
+        item2.replies = item2.children;
+        item2.avatarUrl = userItem2?.avatarUrl;
+        item2.fullName = userItem2?.name;
+        item2.replies.forEach((item3: any) => {
+          const userItem3 = users.get(item3.userId);
+          item3.comId = item3.commentId;
+          item3.replies = item3.children;
+          item3.avatarUrl = userItem3?.avatarUrl;
+          item3.fullName = userItem3?.name;
+        });
       });
     });
     _setData(data);
