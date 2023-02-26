@@ -22,13 +22,13 @@ import Document from "~/models/Document";
 import Revision from "~/models/Revision";
 import DocumentMove from "~/scenes/DocumentMove";
 import Branding from "~/components/Branding";
+import Comments from "~/components/Comments";
 import ConnectionStatus from "~/components/ConnectionStatus";
 import ErrorBoundary from "~/components/ErrorBoundary";
 import Flex from "~/components/Flex";
 import LoadingIndicator from "~/components/LoadingIndicator";
 import Modal from "~/components/Modal";
 import PageTitle from "~/components/PageTitle";
-import Comments from "~/components/Comments";
 import PlaceholderDocument from "~/components/PlaceholderDocument";
 import RegisterKeyDown from "~/components/RegisterKeyDown";
 import withStores from "~/components/withStores";
@@ -582,62 +582,63 @@ class DocumentScene extends React.Component<Props> {
                       id={revision.id}
                     />
                   ) : (
-                      <>
-                        <Editor
-                          id={document.id}
-                          key={embedsDisabled ? "disabled" : "enabled"}
-                          ref={this.editor}
-                          multiplayer={collaborativeEditing}
-                          shareId={shareId}
-                          isDraft={document.isDraft}
-                          template={document.isTemplate}
-                          document={document}
-                          value={readOnly ? document.text : undefined}
-                          defaultValue={document.text}
-                          embedsDisabled={embedsDisabled}
-                          onSynced={this.onSynced}
-                          onFileUploadStart={this.onFileUploadStart}
-                          onFileUploadStop={this.onFileUploadStop}
-                          onSearchLink={this.props.onSearchLink}
-                          onCreateLink={this.props.onCreateLink}
-                          onChangeTitle={this.onChangeTitle}
-                          onChange={this.onChange}
-                          onHeadingsChange={this.onHeadingsChange}
-                          onSave={this.onSave}
-                          onPublish={this.onPublish}
-                          onCancel={this.goBack}
-                          readOnly={readOnly}
-                          readOnlyWriteCheckboxes={readOnly && abilities.update}
-                        >
-                          {shareId && (
-                            <ReferencesWrapper isOnlyTitle={document.isOnlyTitle}>
-                              <PublicReferences
-                                shareId={shareId}
-                                documentId={document.id}
-                                sharedTree={this.props.sharedTree}
-                              />
-                            </ReferencesWrapper>
-                          )}
-                          {!isShare && !revision && (
-                            <>
-                              <MarkAsViewed document={document} />
-                              <ReferencesWrapper
-                                isOnlyTitle={document.isOnlyTitle}
-                              >
-                                <References document={document} />
-                              </ReferencesWrapper>
-                            </>
-                          )}
-                        </Editor>
-
-                        {showContents && (
-                          <Contents
-                            headings={this.headings}
-                            isFullWidth={document.fullWidth}
-                          />
+                    <>
+                      <Editor
+                        id={document.id}
+                        key={embedsDisabled ? "disabled" : "enabled"}
+                        ref={this.editor}
+                        multiplayer={collaborativeEditing}
+                        shareId={shareId}
+                        isDraft={document.isDraft}
+                        template={document.isTemplate}
+                        document={document}
+                        value={readOnly ? document.text : undefined}
+                        defaultValue={document.text}
+                        embedsDisabled={embedsDisabled}
+                        onSynced={this.onSynced}
+                        onFileUploadStart={this.onFileUploadStart}
+                        onFileUploadStop={this.onFileUploadStop}
+                        onSearchLink={this.props.onSearchLink}
+                        onCreateLink={this.props.onCreateLink}
+                        onChangeTitle={this.onChangeTitle}
+                        onChange={this.onChange}
+                        onHeadingsChange={this.onHeadingsChange}
+                        onSave={this.onSave}
+                        onPublish={this.onPublish}
+                        onCancel={this.goBack}
+                        readOnly={readOnly}
+                        readOnlyWriteCheckboxes={readOnly && abilities.update}
+                        bottomPadding="20px"
+                      >
+                        {shareId && (
+                          <ReferencesWrapper isOnlyTitle={document.isOnlyTitle}>
+                            <PublicReferences
+                              shareId={shareId}
+                              documentId={document.id}
+                              sharedTree={this.props.sharedTree}
+                            />
+                          </ReferencesWrapper>
                         )}
-                      </>
-                    )}
+                        {!isShare && !revision && (
+                          <>
+                            <MarkAsViewed document={document} />
+                            <ReferencesWrapper
+                              isOnlyTitle={document.isOnlyTitle}
+                            >
+                              <References document={document} />
+                            </ReferencesWrapper>
+                          </>
+                        )}
+                      </Editor>
+
+                      {showContents && (
+                        <Contents
+                          headings={this.headings}
+                          isFullWidth={document.fullWidth}
+                        />
+                      )}
+                    </>
+                  )}
                 </Flex>
                 <Comments id={document.id}></Comments>
               </React.Suspense>
@@ -680,7 +681,7 @@ type MaxWidthProps = {
   showContents?: boolean;
 };
 
-const MaxWidth = styled(Flex) <MaxWidthProps>`
+const MaxWidth = styled(Flex)<MaxWidthProps>`
   // Adds space to the gutter to make room for heading annotations
   padding: 0 32px;
   transition: padding 100ms;
