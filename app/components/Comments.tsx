@@ -112,11 +112,11 @@ const Comments = (props: Props) => {
           .then((response) => response.json())
           .then((data) => this.setState({ postId: data.commentId }));
       }}
-      onDeleteAction={(data: { comId: string }) => {
+      onDeleteAction={(data: { comIdToDelete: string }) => {
         const requestOptions = {
           method: "DELETE",
         };
-        fetch("/api/discussion/comment/" + data.comId, requestOptions);
+        fetch("/api/discussion/comment/" + data.comIdToDelete, requestOptions);
       }}
       onEditAction={(data: { comId: string; text: string }) => {
         const requestOptions = {
