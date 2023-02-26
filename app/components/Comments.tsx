@@ -112,6 +112,24 @@ const Comments = (props: Props) => {
           .then((response) => response.json())
           .then((data) => this.setState({ postId: data.commentId }));
       }}
+      onDeleteAction={(data: { comId: string }) => {
+        const requestOptions = {
+          method: "DELETE",
+        };
+        fetch("/api/discussion/comment/" + data.comId, requestOptions);
+      }}
+      onEditAction={(data: { comId: string; text: string }) => {
+        const requestOptions = {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data).replace(/[\u007F-\uFFFF]/g, function (
+            chr
+          ) {
+            return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4);
+          }),
+        };
+        fetch("/api/discussion/comment/" + data.comId, requestOptions);
+      }}
       currentData={(data: any) => {
         console.log(data);
       }}
