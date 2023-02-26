@@ -59,7 +59,20 @@ const Comments = (props: Props) => {
         currentUserProfile: "",
         currentUserFullName: user.name,
       }}
-      inputStyle={{ color: "black" }}
+      hrStyle={{ border: "1px solid #B57167" }}
+      titleStyle={{ color: "#B57167" }}
+      inputStyle={{ border: "1px solid rgb(208 208 208)" }}
+      formStyle={{ backgroundColor: "transparent" }}
+      submitBtnStyle={{
+        border: "1px solid #405F59",
+        backgroundColor: "#405F59",
+      }}
+      cancelBtnStyle={{
+        border: "1px solid gray",
+        backgroundColor: "gray",
+        color: "white",
+      }}
+      advancedInput={true}
       commentData={data}
       onSubmitAction={(data: {
         userId: string;
