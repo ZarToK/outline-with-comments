@@ -19,6 +19,7 @@ const Comments = (props: Props) => {
   const setData = (data: any) => {
     data.forEach((item: any) => {
       item.comId = item.commentId;
+      item.replies = item.children;
       users.all.forEach((userItem) => {
         if (userItem.id === item.userId) {
           item.avatarUrl = userItem.avatarUrl;
