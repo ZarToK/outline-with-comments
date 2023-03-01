@@ -114,7 +114,7 @@ export const light = {
   textDiffDeletedBackground: "#ffebe9",
   placeholder: "#a2b2c3",
   sidebarBackground: colors.sqlLightGreen,
-  sidebarActiveBackground: colors.sqlLightBlue,
+  sidebarActiveBackground: colors.white,
   sidebarControlHoverBackground: "rgb(138 164 193 / 20%)",
   sidebarDraftBorder: darken("0.25", colors.warmGrey),
   sidebarText: "rgb(78, 92, 110)",
