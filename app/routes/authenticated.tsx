@@ -44,6 +44,13 @@ const Home = React.lazy(
       "~/scenes/Home"
     )
 );
+const Discussions = React.lazy(
+  () =>
+    import(
+      /* webpackChunkName: "questions-document" */
+      "~/scenes/Questions"
+    )
+);
 const Search = React.lazy(
   () =>
     import(
@@ -97,6 +104,9 @@ function AuthenticatedRoutes() {
             <Route path="/home" component={Home} />
             <Redirect exact from="/starred" to="/home" />
             <Redirect exact from="/collections/*" to="/collection/*" />
+            <Route exact path="/questions" component={Discussions} />
+            <Route exact path="/questions/:id/new" component={Discussions} />
+            <Route exact path="/questions/:id" component={Discussions} />
             <Route exact path="/collection/:id/new" component={DocumentNew} />
             <Route exact path="/collection/:id/:tab" component={Collection} />
             <Route exact path="/collection/:id" component={Collection} />

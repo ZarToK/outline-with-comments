@@ -1,5 +1,11 @@
 import { observer } from "mobx-react";
-import { EditIcon, SearchIcon, ShapesIcon, HomeIcon } from "outline-icons";
+import {
+  EditIcon,
+  SearchIcon,
+  ShapesIcon,
+  HomeIcon,
+  QuestionMarkIcon,
+} from "outline-icons";
 import * as React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -20,6 +26,7 @@ import {
   draftsPath,
   templatesPath,
   searchPath,
+  qaPath,
 } from "~/utils/routeHelpers";
 import TeamLogo from "../TeamLogo";
 import Sidebar from "./Sidebar";
@@ -93,6 +100,12 @@ function AppSidebar() {
                 to={searchPath()}
                 icon={<SearchIcon color="currentColor" />}
                 label={t("Search")}
+                exact={false}
+              />
+              <SidebarLink
+                to={qaPath()}
+                icon={<QuestionMarkIcon color="currentColor" />}
+                label={t("Questions")}
                 exact={false}
               />
               {can.createDocument && (

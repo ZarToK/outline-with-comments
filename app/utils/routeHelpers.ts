@@ -6,6 +6,10 @@ export function homePath(): string {
   return "/home";
 }
 
+export function qaPath(): string {
+  return "/questions";
+}
+
 export function draftsPath(): string {
   return "/drafts";
 }
