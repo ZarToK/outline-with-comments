@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { createLocation, LocationDescriptor } from "history";
+import { CheckmarkIcon } from "outline-icons";
+import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { Comment } from "sequelize-typescript";
 import List from "~/components/List";
@@ -32,7 +34,7 @@ const DiscussionBoard: React.FC = () => {
   const params = useParams<UrlParams>();
 
   useEffect(() => {
-    fetch("/test-data/discussion-data.json")
+    fetch("/api/discussion/questions")
       .then((response) => response.json())
       .then((data) => {
         const discussionsData = data.map((discussionData: any) => {
@@ -55,56 +57,52 @@ const DiscussionBoard: React.FC = () => {
     return <Comments id={params.id}></Comments>;
   }
 
-  /*
-
-  const handleAnswerClick = (discussionIndex: number, commentIndex: number) => {
-    const updatedDiscussions = discussions.map((discussion, index) => {
-      if (index !== discussionIndex) {
-        return discussion;
+  function generateUUID(): string {
+    let uuid = "";
+    for (let i = 0; i < 32; i++) {
+      if (i === 8 || i === 12 || i === 16 || i === 20) {
+        uuid += "-";
       }
-      const updatedComments = discussion.children.map((comment, commentIndexToUpdate) => {
-        const isAnswer = commentIndex === commentIndexToUpdate;
-        return {
-          ...comment,
-          answer: isAnswer
-        };
-      });
-      return {
-        ...discussion,
-        children: updatedComments
-      };
-    });
-    setDiscussions(updatedDiscussions);
-  };
-  */
+      const random = Math.floor(Math.random() * 16);
+      if (i === 12) {
+        uuid += "4";
+      } else if (i === 16) {
+        uuid += (random & 3) | 8;
+      } else {
+        uuid += random.toString(16);
+      }
+    }
+    return uuid;
+  }
+
+  const location: LocationDescriptor = createLocation(
+    "/questions/Q-" + generateUUID()
+  );
 
   return (
-    <List>
-      {discussions.map((discussion) => (
-        <Item
-          title={discussion.text}
-          to={"/questions/" + discussion.commentId}
-          small={false}
-          border={true}
-        ></Item>
-      ))}
-    </List>
+    <div>
+      <a href={location.pathname}>New question</a>
+      <List>
+        {discussions.map((discussion) => (
+          <Item
+            title={
+              <Fragment>
+                <CheckmarkIcon
+                  color={discussion.answer ? "green" : "grey"}
+                  size={22}
+                />{" "}
+                {discussion.text.substring(0, 80)}
+              </Fragment>
+            }
+            subtitle={<Fragment>{discussion.text.substring(80, 400)}</Fragment>}
+            to={"/questions/" + discussion.commentId}
+            small={false}
+            border={true}
+          ></Item>
+        ))}
+      </List>
+    </div>
   );
-  /*
-return (
-{
-  discussions.map((discussion, discussionIndex) => (
-
-      {discussion.children.map((comment, commentIndex) => (
-        <div key={comment.commentId}>
-          <p>{comment.text}</p>
-          <button onClick={() => handleAnswerClick(discussionIndex, commentIndex)}>Mark as Answer</button>
-          {comment.answer && <p>Answered</p>}
-        </div>
-      ))}
-  ))
-}
-)*/
 };
 
 export default DiscussionBoard;

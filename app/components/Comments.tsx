@@ -59,6 +59,10 @@ const Comments = (props: Props) => {
         currentUserProfile: "",
         currentUserFullName: user.name,
       }}
+      logIn={{
+        loginLink: "",
+        signupLink: "",
+      }}
       hrStyle={{ border: "1px solid #B57167" }}
       titleStyle={{ color: "#B57167" }}
       inputStyle={{ border: "1px solid rgb(208 208 208)" }}
