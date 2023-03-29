@@ -34,7 +34,7 @@ const DiscussionBoard: React.FC = () => {
   const params = useParams<UrlParams>();
 
   useEffect(() => {
-    fetch("/api/discussion/questions")
+    fetch("/api/discussion/questions/all")
       .then((response) => response.json())
       .then((data) => {
         const discussionsData = data.map((discussionData: any) => {
