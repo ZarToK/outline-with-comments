@@ -16,6 +16,7 @@ interface Comment {
 }
 
 interface Discussion {
+  discussionId: string;
   userId: string;
   commentId: string;
   text: string;
@@ -39,6 +40,7 @@ const DiscussionBoard: React.FC = () => {
       .then((data) => {
         const discussionsData = data.map((discussionData: any) => {
           const discussion: Discussion = {
+            discussionId: discussionData.discussionId,
             userId: discussionData.userId,
             commentId: discussionData.commentId,
             text: discussionData.text,
@@ -102,7 +104,7 @@ const DiscussionBoard: React.FC = () => {
                 {stripHtmlTags(discussion.text).substring(80, 400)}
               </Fragment>
             }
-            to={"/questions/Q-" + discussion.commentId}
+            to={"/questions/" + discussion.discussionId}
             small={false}
             border={true}
           ></Item>
