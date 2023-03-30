@@ -102,7 +102,7 @@ const DiscussionBoard: React.FC = () => {
                 {stripHtmlTags(discussion.text).substring(80, 400)}
               </Fragment>
             }
-            to={"/questions/" + discussion.commentId}
+            to={"/questions/Q-" + discussion.commentId}
             small={false}
             border={true}
           ></Item>
