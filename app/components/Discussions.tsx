@@ -38,13 +38,12 @@ const DiscussionBoard: React.FC = () => {
       .then((response) => response.json())
       .then((data) => {
         const discussionsData = data.map((discussionData: any) => {
-          const firstComment = discussionData[0];
           const discussion: Discussion = {
-            userId: firstComment.userId,
-            commentId: firstComment.commentId,
-            text: firstComment.text,
-            children: firstComment.children,
-            answer: firstComment.answer,
+            userId: discussionData.userId,
+            commentId: discussionData.commentId,
+            text: discussionData.text,
+            children: discussionData.children,
+            answer: discussionData.answer,
           };
           return discussion;
         });
