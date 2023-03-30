@@ -78,6 +78,10 @@ const DiscussionBoard: React.FC = () => {
     "/questions/Q-" + generateUUID()
   );
 
+  function stripHtmlTags(html: string): string {
+    return html.replace(/<[^>]*>/g, "");
+  }
+
   return (
     <div>
       <a href={location.pathname}>New question</a>
@@ -90,10 +94,14 @@ const DiscussionBoard: React.FC = () => {
                   color={discussion.answer ? "green" : "grey"}
                   size={22}
                 />{" "}
-                {discussion.text.substring(0, 80)}
+                {stripHtmlTags(discussion.text).substring(0, 80)}
               </Fragment>
             }
-            subtitle={<Fragment>{discussion.text.substring(80, 400)}</Fragment>}
+            subtitle={
+              <Fragment>
+                {stripHtmlTags(discussion.text).substring(80, 400)}
+              </Fragment>
+            }
             to={"/questions/" + discussion.commentId}
             small={false}
             border={true}
