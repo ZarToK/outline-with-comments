@@ -21,16 +21,22 @@ const Comments = (props: Props) => {
       const userItem = users.get(item.userId);
       item.comId = item.commentId;
       item.replies = item.children;
+      item.avatarUrl =
+        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
       item.fullName = userItem?.name;
       item.replies.forEach((item2: any) => {
         const userItem2 = users.get(item2.userId);
         item2.comId = item2.commentId;
         item2.replies = item2.children;
+        item2.avatarUrl =
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAgitAAAYAAjCB0C8AAAAASUVORK5CYII=";
         item2.fullName = userItem2?.name;
         item2.replies.forEach((item3: any) => {
           const userItem3 = users.get(item3.userId);
           item3.comId = item3.commentId;
           item3.replies = item3.children;
+          item3.avatarUrl =
+            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
           item3.fullName = userItem3?.name;
         });
       });
@@ -52,7 +58,8 @@ const Comments = (props: Props) => {
     <CommentSection
       currentUser={{
         currentUserId: user.id,
-        currentUserImg: user.avatarUrl,
+        currentUserImg:
+          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
         currentUserProfile: "",
         currentUserFullName: user.name,
       }}
