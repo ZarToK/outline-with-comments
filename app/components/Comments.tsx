@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { CommentSection } from "react-comments-section";
 import mdcRippleCss from "react-comments-section/dist/index.css";
 import useCurrentUser from "~/hooks/useCurrentUser";
-import useStores from "~/hooks/useStores";
 
 mdcRippleCss; // hack - if removed the comment css will be removed by webpack production optimization
 
@@ -13,39 +12,31 @@ type Props = {
 const Comments = (props: Props) => {
   const user = useCurrentUser();
   const discussionId = props.id;
-  const { users } = useStores();
   const [data, _setData] = useState([]);
 
   const setData = (data: any) => {
     data.forEach((item: any) => {
-      const userItem = users.get(item.userId);
       item.comId = item.commentId;
       item.replies = item.children;
-      item.avatarUrl =
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
-      item.fullName = userItem?.name;
       item.replies.forEach((item2: any) => {
-        const userItem2 = users.get(item2.userId);
         item2.comId = item2.commentId;
         item2.replies = item2.children;
-        item2.avatarUrl =
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAgitAAAYAAjCB0C8AAAAASUVORK5CYII=";
-        item2.fullName = userItem2?.name;
         item2.replies.forEach((item3: any) => {
-          const userItem3 = users.get(item3.userId);
           item3.comId = item3.commentId;
           item3.replies = item3.children;
-          item3.avatarUrl =
-            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
-          item3.fullName = userItem3?.name;
         });
       });
     });
     _setData(data);
   };
 
+  const endpoint =
+    window.location.hostname !== "wiki.sqlsystems.se"
+      ? "/test-data/comment-data.json"
+      : "/api/discussion/" + discussionId;
+
   const fetchData = () => {
-    return fetch("/api/discussion/" + discussionId)
+    return fetch(endpoint)
       .then((response) => response.json())
       .then((data) => setData(data));
   };
@@ -58,8 +49,7 @@ const Comments = (props: Props) => {
     <CommentSection
       currentUser={{
         currentUserId: user.id,
-        currentUserImg:
-          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+        currentUserImg: user.avatarUrl,
         currentUserProfile: "",
         currentUserFullName: user.name,
       }}
@@ -86,6 +76,8 @@ const Comments = (props: Props) => {
         userId: string;
         comId: string;
         text: string;
+        fullName: string;
+        avatarUrl: string;
       }) => {
         const requestOptions = {
           method: "POST",
@@ -103,6 +95,8 @@ const Comments = (props: Props) => {
       onReplyAction={(data: {
         userId: string;
         comId: string;
+        fullName: string;
+        avatarUrl: string;
         parentOfRepliedCommentId: string;
         repliedToCommentId: string;
         text: string;

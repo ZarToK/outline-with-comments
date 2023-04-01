@@ -69,7 +69,7 @@ export const base = {
   fontWeight: 400,
   backgroundTransition: "background 100ms ease-in-out",
   selected: colors.primary,
-  buttonBackground: colors.primary,
+  buttonBackground: colors.sqlDarkGreen,
   buttonText: colors.white,
   textHighlight: "#FDEA9B",
   textHighlightForeground: colors.almostBlack,

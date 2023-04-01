@@ -33,9 +33,13 @@ const DiscussionBoard: React.FC = () => {
 
   // Get ID from URL
   const params = useParams<UrlParams>();
+  const endpoint =
+    window.location.hostname !== "wiki.sqlsystems.se"
+      ? "/test-data/discussion-data.json"
+      : "/api/discussion/questions/all";
 
   useEffect(() => {
-    fetch("/api/discussion/questions/all")
+    fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
         const discussionsData = data.map((discussionData: any) => {
