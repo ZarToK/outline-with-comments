@@ -1,4 +1,4 @@
-import { CheckmarkIcon } from "outline-icons";
+import { CheckmarkIcon, TrashIcon } from "outline-icons";
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Comment } from "sequelize-typescript";
@@ -84,6 +84,14 @@ const DiscussionBoard: React.FC = () => {
     setShowComponent(false);
   }
 
+  function deleteQuestion(discussionId: any) {
+    const requestOptions = {
+      method: "DELETE",
+    };
+    fetch("/api/discussion/question/" + discussionId, requestOptions);
+    history.push("/questions");
+  }
+
   const filteredDiscussions = discussions.filter((discussion) =>
     stripHtmlTags(
       discussion.text + discussion.children.map((child) => child.text).join(" ")
@@ -102,6 +110,16 @@ const DiscussionBoard: React.FC = () => {
             }}
           >
             Mark as answered
+          </Button>
+        )}
+        &nbsp;&nbsp;
+        {showComponent && user.isAdmin && (
+          <Button
+            onClick={() => {
+              deleteQuestion(params.id);
+            }}
+          >
+            <TrashIcon size={15} /> Delete
           </Button>
         )}
         <Comments id={params.id}></Comments>
