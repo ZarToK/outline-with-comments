@@ -18,3 +18,5 @@ export const TeamSection = ({ t }: ActionContext) => t("Workspace");
 
 export const RecentSearchesSection = ({ t }: ActionContext) =>
   t("Recent searches");
+
+export const QuestionSection = ({ t }: ActionContext) => t("Question");

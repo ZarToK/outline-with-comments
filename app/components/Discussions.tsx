@@ -3,8 +3,10 @@ import { CheckmarkIcon } from "outline-icons";
 import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { Comment } from "sequelize-typescript";
+import { v4 as uuidv4 } from "uuid";
 import List from "~/components/List";
 import Item from "~/components/List/Item";
+import Button from "./Button";
 import Comments from "./Comments";
 
 interface Comment {
@@ -58,30 +60,44 @@ const DiscussionBoard: React.FC = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  const [showComponent, setShowComponent] = useState(true);
+
+  function answerQuestion(discussionId: any) {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        discussionId,
+        answer: true,
+      }).replace(/[\u007F-\uFFFF]/g, function (chr) {
+        return "\\u" + ("0000" + chr.charCodeAt(0).toString(16)).substr(-4);
+      }),
+    };
+    fetch(
+      "/api/discussion/question/" + discussionId + "/answer",
+      requestOptions
+    );
+    setShowComponent(false);
+  }
+
   if (params.id !== undefined) {
-    return <Comments id={params.id}></Comments>;
+    return (
+      <div>
+        {showComponent && (
+          <Button
+            onClick={() => {
+              answerQuestion(params.id);
+            }}
+          >
+            Mark as answered
+          </Button>
+        )}
+        <Comments id={params.id}></Comments>
+      </div>
+    );
   }
-
-  function generateUUID(): string {
-    let uuid = "";
-    for (let i = 0; i < 32; i++) {
-      if (i === 8 || i === 12 || i === 16 || i === 20) {
-        uuid += "-";
-      }
-      const random = Math.floor(Math.random() * 16);
-      if (i === 12) {
-        uuid += "4";
-      } else if (i === 16) {
-        uuid += (random & 3) | 8;
-      } else {
-        uuid += random.toString(16);
-      }
-    }
-    return uuid;
-  }
-
   const location: LocationDescriptor = createLocation(
-    "/questions/Q-" + generateUUID()
+    "/questions/Q-" + uuidv4()
   );
 
   function stripHtmlTags(html: string): string {
