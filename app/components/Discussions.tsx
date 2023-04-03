@@ -1,13 +1,14 @@
-import { createLocation, LocationDescriptor } from "history";
 import { CheckmarkIcon } from "outline-icons";
 import React, { useState, useEffect, Fragment } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Comment } from "sequelize-typescript";
 import { v4 as uuidv4 } from "uuid";
 import List from "~/components/List";
 import Item from "~/components/List/Item";
+import useCurrentUser from "~/hooks/useCurrentUser";
 import Button from "./Button";
 import Comments from "./Comments";
+import InputSearch from "./InputSearch";
 
 interface Comment {
   userId: string;
@@ -32,6 +33,9 @@ interface UrlParams {
 
 const DiscussionBoard: React.FC = () => {
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const user = useCurrentUser();
+  const history = useHistory();
 
   // Get ID from URL
   const params = useParams<UrlParams>();
@@ -80,10 +84,18 @@ const DiscussionBoard: React.FC = () => {
     setShowComponent(false);
   }
 
+  const filteredDiscussions = discussions.filter((discussion) =>
+    stripHtmlTags(
+      discussion.text + discussion.children.map((child) => child.text).join(" ")
+    )
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase())
+  );
+
   if (params.id !== undefined) {
     return (
       <div>
-        {showComponent && (
+        {showComponent && user.isAdmin && (
           <Button
             onClick={() => {
               answerQuestion(params.id);
@@ -96,9 +108,6 @@ const DiscussionBoard: React.FC = () => {
       </div>
     );
   }
-  const location: LocationDescriptor = createLocation(
-    "/questions/Q-" + uuidv4()
-  );
 
   function stripHtmlTags(html: string): string {
     return html.replace(/<[^>]*>/g, "");
@@ -106,10 +115,30 @@ const DiscussionBoard: React.FC = () => {
 
   return (
     <div>
-      <a href={location.pathname}>New question</a>
+      <Button
+        onClick={() => {
+          {
+            history.push("/questions/Q-" + uuidv4());
+          }
+        }}
+      >
+        New question
+      </Button>
+      <br />
+      <br />
+      <InputSearch
+        type="text"
+        value={searchTerm}
+        placeholder="Search . . ."
+        onChange={(event: {
+          target: { value: React.SetStateAction<string> };
+        }) => setSearchTerm(event.target.value)}
+      />
+      <br />
       <List>
-        {discussions.map((discussion) => (
+        {filteredDiscussions.map((discussion) => (
           <Item
+            key={discussion.discussionId}
             title={
               <Fragment>
                 <CheckmarkIcon
