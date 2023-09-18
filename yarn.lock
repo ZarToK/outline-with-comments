@@ -1522,6 +1522,13 @@
   dependencies:
     lib0 "^0.2.47"
 
+"@hocuspocus/common@^2.2.3":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@hocuspocus/common/-/common-2.5.0.tgz#adfbaa770d1e8eda0a811ad93b427cdf89960e3d"
+  integrity sha512-TpnQAb1Rtff1trwURFWaUEYZwqykaIGo6NNnMr6ZISdDZFWNHMAMUmy7dwJDS9ECnEtcjXhpPxXeLV+MVQXVnw==
+  dependencies:
+    lib0 "^0.2.47"
+
 "@hocuspocus/provider@^1.0.0-beta.6":
   version "1.0.0-beta.6"
   resolved "https://registry.npmjs.org/@hocuspocus/provider/-/provider-1.0.0-beta.6.tgz"
@@ -1531,19 +1538,16 @@
     "@lifeomic/attempt" "^3.0.2"
     lib0 "^0.2.46"
 
-"@hocuspocus/server@^1.0.0-beta.6":
-  version "1.0.0-beta.6"
-  resolved "https://registry.npmjs.org/@hocuspocus/server/-/server-1.0.0-beta.6.tgz"
-  integrity sha512-54N5sdxaDGN7v6XVPyYI+XjhNlH82hFXkh3VQg3H/Hmpaw9gpXSUwaozxTOpiN4hhjLrQ95sDyqnve5G52a6Xw==
+"@hocuspocus/server@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@hocuspocus/server/-/server-2.2.3.tgz#64f013e88813427a3f485ba6485dff622fdd919e"
+  integrity sha512-NFU9vXGo1IHkFluh+rW4IaOKPgxAgovJRL+RwJj6c8oTJSdLpayoUWnNIEMpZ7Jo68wZLMp6Sp3ib0NY98c/WQ==
   dependencies:
-    "@hocuspocus/common" "^1.0.0-beta.6"
-    "@types/async-lock" "^1.1.3"
-    "@types/uuid" "^8.3.4"
-    "@types/ws" "^8.5.3"
+    "@hocuspocus/common" "^2.2.3"
     async-lock "^1.3.1"
     kleur "^4.1.4"
-    lib0 "^0.2.46"
-    uuid "^8.3.2"
+    lib0 "^0.2.47"
+    uuid "^9.0.0"
     ws "^8.5.0"
 
 "@humanwhocodes/config-array@^0.5.0":
@@ -2961,11 +2965,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/async-lock@^1.1.3":
-  version "1.1.5"
-  resolved "https://registry.npmjs.org/@types/async-lock/-/async-lock-1.1.5.tgz"
-  integrity sha512-A9ClUfmj6wwZMLRz0NaYzb98YH1exlHdf/cdDSKBfMQJnPOdO8xlEW0Eh2QsTTntGzOFWURcEjYElkZ1IY4GCQ==
-
 "@types/babel__core@^7.1.14":
   version "7.1.17"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.17.tgz"
@@ -3919,13 +3918,6 @@
     "@types/webpack-sources" "*"
     anymatch "^3.0.0"
     source-map "^0.6.0"
-
-"@types/ws@^8.5.3":
-  version "8.5.3"
-  resolved "https://registry.npmjs.org/@types/ws/-/ws-8.5.3.tgz"
-  integrity sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==
-  dependencies:
-    "@types/node" "*"
 
 "@types/yargs-parser@*":
   version "15.0.0"
@@ -17227,6 +17219,11 @@ uuid@^8.3.0, uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.npmjs.org/uuid/-/uuid-8.3.2.tgz"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.1.tgz#e188d4c8853cc722220392c424cd637f32293f30"
+  integrity sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==
 
 v8-compile-cache@^2.0.3:
   version "2.2.0"
