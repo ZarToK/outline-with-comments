@@ -233,7 +233,7 @@
     "@getoutline/jest-runner-serial": "^2.0.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
     "@relative-ci/agent": "^3.0.0",
-    "@types/body-scroll-lock": "^3.1.0",
+    "@types/body-scroll-lock": "^3.1.2",
     "@types/crypto-js": "^4.1.1",
     "@types/datadog-metrics": "^0.6.2",
     "@types/emoji-regex": "^9.2.0",
