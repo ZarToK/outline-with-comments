@@ -300,7 +300,7 @@
     "@types/throng": "^5.0.3",
     "@types/tmp": "^0.2.2",
     "@types/turndown": "^5.0.1",
-    "@types/utf8": "^3.0.1",
+    "@types/utf8": "^3.0.3",
     "@types/validator": "^13.7.10",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
