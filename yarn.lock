@@ -3165,10 +3165,10 @@
   resolved "https://registry.npmjs.org/@types/fuzzy-search/-/fuzzy-search-2.1.2.tgz"
   integrity sha512-YOqA50Z3xcycm4Br5+MBUpSumfdOAcv34A8A8yFn62zBQPTzJSXQk11qYE5w8BWQ0KrVThXUgEQh7ZLrYI1NaQ==
 
-"@types/google.analytics@^0.0.42":
-  version "0.0.42"
-  resolved "https://registry.npmjs.org/@types/google.analytics/-/google.analytics-0.0.42.tgz"
-  integrity sha512-w0ZFj3SHznQXSq99kFCuO8tkN6w4T14znjrF2alLCSDnHOXEnpzneyNwxLvekcsDBInr8b5mXmzYh03GArqEyw==
+"@types/google.analytics@^0.0.46":
+  version "0.0.46"
+  resolved "https://registry.yarnpkg.com/@types/google.analytics/-/google.analytics-0.0.46.tgz#621be217fa21f847df62188fcaa86a7340c689da"
+  integrity sha512-wuMJ3GqLFGsTZdJ315b+uNnH2AwFScyS67NHlKOD4RaPMFt/N0vxdh6fvDgvOFg62a11Fqn2ggJwUypFmIko+A==
 
 "@types/graceful-fs@^4.1.3":
   version "4.1.5"

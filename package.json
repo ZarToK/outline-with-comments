@@ -243,7 +243,7 @@
     "@types/formidable": "^2.0.5",
     "@types/fs-extra": "^9.0.13",
     "@types/fuzzy-search": "^2.1.2",
-    "@types/google.analytics": "^0.0.42",
+    "@types/google.analytics": "^0.0.46",
     "@types/inline-css": "^3.0.1",
     "@types/invariant": "^2.2.35",
     "@types/jest": "^28.1.6",
