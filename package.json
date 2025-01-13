@@ -324,7 +324,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^4.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "fetch-test-server": "^1.1.0",
