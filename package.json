@@ -339,7 +339,7 @@
     "koa-webpack-hot-middleware": "^1.0.3",
     "lint-staged": "^12.3.8",
     "nodemon": "^2.0.20",
-    "prettier": "^2.0.5",
+    "prettier": "^3.6.2",
     "react-refresh": "^0.14.0",
     "rimraf": "^2.5.4",
     "style-loader": "2.0.0",
