@@ -3317,10 +3317,10 @@
   dependencies:
     "@types/koa" "*"
 
-"@types/koa-mount@^4.0.1":
-  version "4.0.1"
-  resolved "https://registry.npmjs.org/@types/koa-mount/-/koa-mount-4.0.1.tgz"
-  integrity sha512-HNeg80CVS9Dfq8dGYqCZZCAUm7g6jPCNJ1ydqVLEJxLrjmeburpvq+lOZkE4rxBZ6O38dr3tj9IA3IfbdoI05w==
+"@types/koa-mount@^4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@types/koa-mount/-/koa-mount-4.0.5.tgz#63f99d513a78dc9f13fb9a2dab75d9ff4a2050cf"
+  integrity sha512-pV1njJ7r94iqAFzT9D5sGSYKUHFGudCLAnmr4WFli7V5tJf5MAgRQK9leTPJ4gjvgr+hnTf86fZsKoFN358c7w==
   dependencies:
     "@types/koa" "*"
 
@@ -6998,7 +6998,7 @@ debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.2, debug@^4.3.3, d
   dependencies:
     ms "2.1.2"
 
-debug@^2.2.0, debug@^2.3.3, debug@^2.6.1, debug@^2.6.8, debug@^2.6.9:
+debug@^2.2.0, debug@^2.3.3, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.npmjs.org/debug/-/debug-2.6.9.tgz"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -11162,7 +11162,7 @@ koa-body@^4.2.0:
     co-body "^5.1.1"
     formidable "^1.1.1"
 
-koa-compose@^3.0.0, koa-compose@^3.2.1:
+koa-compose@^3.0.0:
   version "3.2.1"
   resolved "https://registry.npmjs.org/koa-compose/-/koa-compose-3.2.1.tgz"
   integrity sha1-qFzLQLfZhtjlo0Wzoazo6rz1Tec=
@@ -11215,18 +11215,10 @@ koa-logger@^3.2.1:
     humanize-number "0.0.2"
     passthrough-counter "^1.0.0"
 
-koa-mount@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/koa-mount/-/koa-mount-3.0.0.tgz"
-  integrity sha1-CMqzuD0xRC7Yt+dcVLGr65IuwZc=
-  dependencies:
-    debug "^2.6.1"
-    koa-compose "^3.2.1"
-
-koa-mount@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/koa-mount/-/koa-mount-4.0.0.tgz"
-  integrity sha512-rm71jaA/P+6HeCpoRhmCv8KVBIi0tfGuO/dMKicbQnQW/YJntJ6MnnspkodoA4QstMVEZArsCphmd0bJEtoMjQ==
+koa-mount@^4.0.0, koa-mount@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/koa-mount/-/koa-mount-4.2.0.tgz#66f4436cac76af3075ac432d503299f7678d5914"
+  integrity sha512-2iHQc7vbA9qLeVq5gKAYh3m5DOMMlMfIKjW/REPAS18Mf63daCJHHVXY9nbu7ivrnYn5PiPC4CE523Tf5qvjeQ==
   dependencies:
     debug "^4.0.1"
     koa-compose "^4.1.0"
